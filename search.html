@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    
+    <div id="navbar"></div>
+
+    <div id="container"></div>
+    <div id="search_dv"></div>
+</body>
+</html>
+
+<script type="module">
+import navbar from "./components/navbar.js";
+
+import {getData,append ,search} from "./scripts/showdata.js";
+
+
+let search_div=document.getElementById("search_dv");
+
+let navbar_div = document.getElementById("navbar");
+navbar_div.innerHTML= navbar();
+
+
+
+
+
+//try getting data on console
+
+let s_btn=document.getElementById("searchbtn");
+s_btn.onclick= function serch(){
+    let dta = search();
+
+    dta.then((res)=>{
+        //console.log('res :>> ', res.meals);
+        append(res.meals,search_div);
+    }).catch((err)=>{
+        console.log('err :>> ', err);
+    })
+}
+
+
+
+//let response = search();
+
+// console.log('response :>> ', response);
+// response.then((res)=>{
+    
+//     let container = document.getElementById("container");
+//     console.log('res :>> ', res.categories);
+//     append(res.categories,container);
+    
+
+// })
+// .catch((err)=>{
+//     console.log('err :>> ', err);
+// })
+   
+</script>
