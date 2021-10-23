@@ -38,6 +38,10 @@ s_btn.onclick= function serch(){
         append(result.meals,search_div);
     }).catch((err)=>{
         console.log('err :>> ', err);
+        let alertmsg=document.createElement("p");
+        alertmsg.style.color="red";
+        alertmsg.innerText="item not found! please try again!!!";
+        search_div.append(alertmsg);
     })
 }
 
